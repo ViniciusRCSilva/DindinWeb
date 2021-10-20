@@ -20,6 +20,8 @@ export default {
     footer{
         width: 100%;
         background-color: var(--color-background-nav);
+        z-index: 1;
+        position: absolute;
     }
 
     h1, p{
