@@ -1,0 +1,27 @@
+:root{
+   --color-background-nav: #2E948A; 
+   --color-background: #FFFF;
+   --color-text-pink: #FF4081;
+   --color-text-light: #FFFF;
+   --color-line: #C4C4C4;
+   --color-background-videos: #F6F6F6;
+   --color-btn-yellow: #F8C23A;
+   --color-btn-red: #F8513A;
+   --color-div-painel: #EBEBEB;
+   --color-border-painel: #989898;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+html, body{
+    background-color: var(--color-background);
+}
+
+button:hover{
+    opacity: 0.8;
+}

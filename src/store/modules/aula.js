@@ -12,7 +12,6 @@ export default {
         SET_AULAS_CURSO(state, payload) {
             state.aulas = payload;
         }
-
     },
     actions: {
         getAulas(context) {

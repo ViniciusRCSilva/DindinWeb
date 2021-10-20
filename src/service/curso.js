@@ -4,8 +4,6 @@ export default {
     getCursos() {
         return api.get('Cursos').then(res => {
             return res
-
-
         }).catch(error => {
             return error
         })
@@ -17,4 +15,11 @@ export default {
             return error
         })
     },
+    deleteCursoById(cursoId){
+        return api.delete(`Cursos/${cursoId}`).then(res => {
+            return res
+        }).catch(error => {
+            return error
+        })
+    }
 }

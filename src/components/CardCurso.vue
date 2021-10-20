@@ -1,24 +1,18 @@
 <template>
   <div>
-    <b-row>
-      <b-card
-        v-for="curso in listCursos"
-        :key="curso.index"
-        :title="curso.titulo"
-      >
-        <b-card-text class="card__curso--detail">
-          <span>Professor: {{ curso.professor }}</span>
-          <span>Imagem: {{ curso.imagemCapa }} </span>
-          <span>ID Curso: {{ curso.cursoId }} </span>
-          <span>Descrição: {{ curso.cursoDescricao }}</span>
-        </b-card-text>
-        <b-button
-          variant="outline-primary"
-          @click="openDetailCurso(curso.cursoId)"
-          >Detalhes</b-button
-        >
-      </b-card>
-    </b-row>
+    <div v-for="curso in listCursos" :key="curso.cursoId">
+
+        <div id="curso">
+            <img :src="curso.imagemCapa" alt="img" id="img">
+            <div>
+                <h1 id="cursoTitle">{{ curso.titulo }}</h1>
+                <p id="cursoDesc">{{ curso.cursoDescricao }}</p>
+                <button @click="openDetailCurso(curso.cursoId)">começar agora</button>
+            </div>
+        </div>
+
+        <div id="line"></div>
+    </div>
   </div>
 </template>
 
@@ -39,25 +33,55 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+h1 {
+  color: var(--color-text-pink);
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+button {
+  cursor: pointer;
+  border: none;
+  color: var(--color-text-light);
+  background-color: var(--color-background-nav);
+  border-radius: 50px;
+  padding: 5px 20px 5px;
+  margin-top: 20px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+#curso {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
-a {
-  color: #42b983;
+
+#line {
+  background-color: var(--color-line);
+  height: 2px;
+  border-radius: 5px;
 }
-.card__curso--detail {
+
+#cursoTitle {
+  font-size: 20px;
+}
+
+#cursoDesc {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+#introduction {
   display: flex;
   flex-direction: column;
+  width: 80%;
+  height: 10%;
 }
-.card--style {
-  margin: 16px;
+
+#img {
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
 </style>

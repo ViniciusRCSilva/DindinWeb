@@ -1,25 +1,25 @@
 <template>
   <div class="home">
     <div class="content">
-      <h1>Cursos</h1>
+      <h1>Painel Administrativo</h1>
       <p>Educação financeira é tudo de bom</p>
-      <CardCurso />
+      <CardPainel />
     </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import CardCurso from "../components/CardCurso.vue";
+import CardPainel from "../components/CardPainel.vue";
 
 export default {
-  components: { CardCurso },
-  name: "Cursos",
+  components: { CardPainel },
+  name: "Painel",
   created() {
     this.getCursos();
   },
   methods: {
-    ...mapActions("curso", ["getCursos"]),
+    ...mapActions("curso", ["getCursos"])
   },
   computed: {
     ...mapGetters("curso", ["listCursos"]),

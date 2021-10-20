@@ -1,18 +1,18 @@
 <template>
   <div>
-    <b-row>
-      <b-card
-        v-for="aula in listAulas"
-        :key="aula.index"
-        :title="aula.aulaTitulo"
-      >
-        <b-card-text class="card__curso--detail">
-          <span>Descrição: {{ aula.aulaDescricao }}</span>
-          <span>Link: {{ aula.aulaLink }} </span>
-          <span>ID do Curso: {{ aula.cursoId }} </span>
-        </b-card-text>
-      </b-card>
-    </b-row>
+    <div v-for="aula in listAulas" :key="aula.index">
+        <div id="videoArea">
+          <div id="allVideoInf">
+            <a :href="aula.aulaLink"><img :src="aula.aulaLink" alt="video" id="video"></a>
+            <div id="videoDescription">
+                <h1>{{ aula.aulaTitulo }}</h1>
+                <p>{{ aula.aulaDescricao }}</p>
+            </div>
+          </div>
+
+          <div id="line"></div>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -30,25 +30,38 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.card__curso--detail {
-  display: flex;
-  flex-direction: column;
-}
-.card--style {
-  margin: 16px;
-}
+  h1{
+    font-size: 25px;
+    color: var(--color-text-pink);
+  }
+
+  #videoArea{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+
+  #allVideoInf{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+
+  #video{
+    width: 300px;
+  }
+
+  #videoDescription{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+
+  #line{
+    background-color: var(--color-line);
+    height: 2px;
+    width: 100%;
+    border-radius: 5px;
+  }
 </style>
