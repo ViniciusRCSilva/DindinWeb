@@ -35,6 +35,11 @@ const routes = [
     path: '/Cursos/Editar/:cursoId',
     name: 'Editar',
     component: () => import('../views/Editar.vue')
+  },
+  {
+    path:'/adicionarAula',
+    name: 'AdicionarAula',
+    component: () => import('../views/AdicionarAula.vue')
   }
 ]
 

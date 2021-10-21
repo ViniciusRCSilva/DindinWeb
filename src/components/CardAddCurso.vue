@@ -7,12 +7,12 @@
             <input id="descricao" type="text" placeholder="Descrição" v-model="curso.cursoDescricao" required>
         </div>
 
-        <h3>Aula</h3>
+<!--         <h3>Aula</h3>
         <div id="cursoArea">
             <input type="text" placeholder="Título da aula" required v-model="curso.aula.aulaTitulo">
             <input type="text" placeholder="Link da aula" required v-model="curso.aula.aulaLink">
             <input id="descricao" type="text" placeholder="Descrição da aula" required v-model="curso.aula.aulaDescricao">
-        </div>
+        </div> -->
 
         <button>salvar</button>
     </form>
@@ -20,7 +20,7 @@
 
 <script>
 import Curso from '../service/curso.js'
-import Aula from '../service/aula.js'
+/* import Aula from '../service/aula.js' */
 
 export default {
     name: 'CardAddCurso',
@@ -31,27 +31,28 @@ export default {
                 professor: '',
                 imagemCapa: '',
                 cursoDescricao: '',
-                aula: [
+/*                 aula: [
                     {
                         aulaDescricao: '',
                         aulaTitulo: '',
                         aulaLink: ''
                     }
-                ]
+                ] */
             }
         }
     },
     methods:{
         salvar(){
             Curso.postCurso(this.curso).then(() =>{
+                alert('Curso salvo com sucesso')
            }).catch(error =>{
                 alert(error)
-           }),
+           })
 
-            Aula.postAula(this.aula).then(() =>{
+/*             Aula.postAula(this.aula).then(() =>{
            }).catch(error =>{
                alert(error)
-           })
+           }) */
         }
     }    
 }

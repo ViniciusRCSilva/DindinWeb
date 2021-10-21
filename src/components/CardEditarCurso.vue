@@ -1,54 +1,75 @@
 <template>
+<div>
     <form @submit.prevent="editar">
         <div id="cursoArea">
-            <input type="text" placeholder="Título" v-model="curso.titulo" required>
-            <input type="text" placeholder="upload capa" v-model="curso.imagemCapa" required>
-            <input type="text" placeholder="Professor" v-model="curso.professor" required>
-            <input id="descricao" type="text" placeholder="Descrição" v-model="curso.cursoDescricao" required>
+            <input type="text" placeholder="Título" v-model="curso.titulo">
+            <input type="text" placeholder="upload capa" v-model="curso.imagemCapa">
+            <input type="text" placeholder="Professor" v-model="curso.professor">
+            <input id="descricao" type="text" placeholder="Descrição" v-model="curso.cursoDescricao">
         </div>
 
-        <h3>Aula</h3>
-        <div id="cursoArea">
-            <input type="text" placeholder="Título da aula" required v-model="curso.aula.aulaTitulo">
-            <input type="text" placeholder="Link da aula" required v-model="curso.aula.aulaLink">
-            <input id="descricao" type="text" placeholder="Descrição da aula" required v-model="curso.aula.aulaDescricao">
+        <div class="contentTitle">
+            <div class="contentAula">
+                <p class="aula"><strong>Aula</strong></p>
+                <a href="/adicionarAula" class="linkAddAula"><strong>+</strong></a>
+            </div>
+
+            <div>
+                <p class="acoes"><strong>Ações</strong></p>
+            </div>
+        </div>
+        <div v-for="aula in listAulas" :key="aula.index">
+            <div class="content">
+                <div>
+                    <p class="tituloAulas">{{ aula.aulaTitulo }}</p>
+                </div>
+
+                <div>
+                    <button @click="openEditAula(aula.aulaId)" class="editarBtn">editar</button>
+                    <button @click="deleteAulaById(aula.aulaId)" class="excluirBtn">excluir</button>
+                </div>
+            </div>
         </div>
 
-        <button>editar</button>
+        <button class="salvar">salvar</button>
     </form>
+</div>
 </template>
 
 <script>
-import Curso from '../service/curso.js'
+import { mapActions, mapGetters } from "vuex";
 
 export default {
     name: 'CardEditarCurso',
     data(){
         return{
             curso: {
-                cursoId: '',
                 titulo: '',
                 professor: '',
                 imagemCapa: '',
-                cursoDescricao: '',
-                aula: [
-                    {
-                        aulaDescricao: '',
-                        aulaTitulo: '',
-                        aulaLink: ''
-                    }
-                ]
+                cursoDescricao: ''
             }
-        } 
+        }
     },
-    methods:{
+    mounted(){
+        this.deleteAulaById(this.$route.params.aulaId)
+    },
+    computed: {
+        ...mapGetters("aula", ["listAulas"]),
+    },
+    methods: {
+        ...mapActions("aula", ["getAulas"]),
+        ...mapActions("aula", ["deleteAulaById"]),
+        openEditAula(aulaId) {
+            this.$router.push(`Aulas/Editar/${aulaId}`);
+        },
         editar(){
             Curso.editCurso(this.curso).then(() =>{
-            }).catch(error =>{
+                alert('Curso editado com sucesso')
+           }).catch(error =>{
                 alert(error)
-            })
+           })
         }
-
     }
 }
 </script>
@@ -74,7 +95,8 @@ input{
 #descricao{
     padding-bottom: 50px;
 }
-button{
+
+.salvar{
     width: 25%;
     background-color: var(--color-background-nav);
     color: var(--color-text-light);
@@ -83,5 +105,70 @@ button{
     padding-top: 5px;
     padding-bottom: 5px;
     cursor: pointer;
+}
+
+.contentTitle{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-div-painel);
+    border: 1px solid var(--color-border-painel);
+}
+
+.aula{
+    margin-left: 15px;
+}
+
+.acoes{
+    margin-right: 150px;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--color-border-painel);
+}
+
+.tituloAulas{
+    margin-left: 15px;
+}
+
+button {
+    margin-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: none;
+    border-radius: 0px;
+}
+
+.editarBtn{
+    color: var(--color-text-light);
+    background-color: var(--color-btn-yellow);
+}
+
+.excluirBtn{
+    color: var(--color-text-light);
+    background-color: var(--color-btn-red);
+}
+
+.contentAula{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.linkAddAula{
+    color: var(--color-background-nav);
+    margin-left: 10px;
+    text-decoration: none;
 }
 </style>

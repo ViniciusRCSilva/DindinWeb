@@ -11,6 +11,12 @@ export default {
         },
         SET_AULAS_CURSO(state, payload) {
             state.aulas = payload;
+        },
+        DELETE_AULA(state, id){
+            index = state.aulas.findIndex(aula =>{
+                aula.id == id
+                state.aulas.splice(index, 1)
+            })
         }
     },
     actions: {
@@ -22,6 +28,12 @@ export default {
         getAulasByCursoId(context, cursoId) {
             return serviceApi.getAulasByCursoId(cursoId).then(res => {
                 context.commit("SET_AULAS_CURSO", res.data);
+            })
+        },
+        deleteAulaById(context, aulaId) {
+            return serviceApi.deleteAulaById(aulaId).then(() =>{
+                /* confirm("Certeza que deseja excluir o curso?") */
+                context.commit('DELETE_AULA')
             })
         }
     },

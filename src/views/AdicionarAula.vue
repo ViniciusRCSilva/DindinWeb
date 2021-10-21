@@ -1,33 +1,20 @@
 <template>
  <div class="home">
     <div class="content">
-        <h1>Editar Curso</h1>
-        <CardEditarCurso class="CardEditarCurso"/>    
+        <h1>Novo Aula</h1>
+        <CardAddAula class="CardAddAula"/>    
     </div>
   </div>    
 </template>
 
 <script>
-import CardEditarCurso from '@/components/CardEditarCurso.vue'
-import { mapActions, mapGetters } from "vuex";
+import CardAddAula from '@/components/CardAddAula.vue'
 
 export default {
-    name: 'Editar',
+    name: 'Adicionar',
     components:{
-        CardEditarCurso
-    },
-    mounted() {
-      this.getCursoById(this.$route.params.cursoId);
-      this.getAulasByCursoId(this.$route.params.cursoId);
-    },
-    methods: {
-      ...mapActions("curso", ["getCursoById"]),
-      ...mapActions("aula", ["getAulasByCursoId"]),
-    },
-    computed: {
-      ...mapGetters("curso", ["listCurso"]),
-      ...mapGetters("aula", ["listAulasCurso"]),
-    },
+        CardAddAula
+    }
 }
 </script>
 
@@ -81,7 +68,7 @@ button{
     width: 30px;
 }
 
-.CardEditarCurso{
+.CardAddAula{
     margin-right: 20px;
 }
 </style>

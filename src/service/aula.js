@@ -17,5 +17,12 @@ export default {
     },
     postAula(conteudo){
         return api.post('Aulas', conteudo)
+    },
+    deleteAulaById(aulaId){
+        return api.delete(`Aulas/${aulaId}`).then(res => {
+            return res
+        }).catch(error => {
+            return error
+        })
     }
 }
