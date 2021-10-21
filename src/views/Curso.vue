@@ -48,13 +48,29 @@ h1{
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 91.4vh;
 }
 
 .content{
   display: flex;
   flex-direction: column;
   width: 80%;
+  overflow-y: scroll;
+  height: 85%;
+}
+
+.content::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+.content::-webkit-scrollbar-track {
+  background: var(--color-background);        /* color of the tracking area */
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: var(--color-background-nav);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 1px solid var(--color-background-nav);  /* creates padding around scroll thumb */
 }
 
 .intro{
@@ -72,12 +88,11 @@ h1{
 
 .image{
   width: 380px;
+  margin-right: 20px;
 }
 
 .aulasArea{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   background-color: var(--color-background-videos);
+  margin-right: 20px;
 }
 </style>

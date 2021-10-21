@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="salvar">
+    <form @submit.prevent="editar">
         <div id="cursoArea">
             <input type="text" placeholder="Título" v-model="curso.titulo" required>
             <input type="text" placeholder="upload capa" v-model="curso.imagemCapa" required>
@@ -14,19 +14,19 @@
             <input id="descricao" type="text" placeholder="Descrição da aula" required v-model="curso.aula.aulaDescricao">
         </div>
 
-        <button>salvar</button>
+        <button>editar</button>
     </form>
 </template>
 
 <script>
 import Curso from '../service/curso.js'
-import Aula from '../service/aula.js'
 
 export default {
-    name: 'CardAddCurso',
+    name: 'CardEditarCurso',
     data(){
         return{
             curso: {
+                cursoId: '',
                 titulo: '',
                 professor: '',
                 imagemCapa: '',
@@ -39,21 +39,17 @@ export default {
                     }
                 ]
             }
-        }
+        } 
     },
     methods:{
-        salvar(){
-            Curso.postCurso(this.curso).then(() =>{
-           }).catch(error =>{
+        editar(){
+            Curso.editCurso(this.curso).then(() =>{
+            }).catch(error =>{
                 alert(error)
-           }),
-
-            Aula.postAula(this.aula).then(() =>{
-           }).catch(error =>{
-               alert(error)
-           })
+            })
         }
-    }    
+
+    }
 }
 </script>
 

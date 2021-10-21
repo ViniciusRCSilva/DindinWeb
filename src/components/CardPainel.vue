@@ -16,13 +16,13 @@
             </div>
 
             <div>
-                <button class="editarBtn">editar</button>
+                <button @click="openEditCurso(curso.cursoId)" class="editarBtn">editar</button>
                 <button @click="deleteCursoById(curso.cursoId)" class="excluirBtn">excluir</button>
             </div>
         </div>
     </div>
 
-    <a href="/adicionarCursos"><button class="adicionarBtn">adicionar curso</button></a>
+    <a href="/adicionarCurso"><button class="adicionarBtn">adicionar curso</button></a>
   </div>
 </template>
 
@@ -33,14 +33,18 @@ export default {
   name: "CardCurso",
   mounted(){
     this.deleteCursoById(this.$route.params.cursoId)
+    this.getCursoById(this.$route.params.cursoId)
   },
   computed: {
     ...mapGetters("curso", ["listCursos"]),
   },
   methods: {
     ...mapActions("curso", ["getCursos"]),
-    ...mapActions("curso", ["deleteCursoById"])
-  },
+    ...mapActions("curso", ["deleteCursoById"]),
+    openEditCurso(cursoId) {
+      this.$router.push(`Cursos/Editar/${cursoId}`);
+    },
+  }
 };
 </script>
 

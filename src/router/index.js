@@ -27,11 +27,15 @@ const routes = [
     component: () => import('../views/Painel.vue')
   },
   {
-    path: '/adicionarCursos',
+    path: '/adicionarCurso',
     name: 'Adicionar',
     component: () => import('../views/Adicionar.vue')
+  },
+  {
+    path: '/Cursos/Editar/:cursoId',
+    name: 'Editar',
+    component: () => import('../views/Editar.vue')
   }
-
 ]
 
 const router = new VueRouter({

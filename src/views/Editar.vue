@@ -1,19 +1,19 @@
 <template>
  <div class="home">
     <div class="content">
-        <h1>Novo Curso</h1>
-        <CardAddCurso class="cardAddCurso"/>    
+        <h1>Editar Curso</h1>
+        <CardEditarCurso class="CardEditarCurso"/>    
     </div>
   </div>    
 </template>
 
 <script>
-import CardAddCurso from '@/components/CardAddCurso.vue'
+import CardEditarCurso from '@/components/CardEditarCurso.vue'
 
 export default {
-    name: 'Adicionar',
+    name: 'Editar',
     components:{
-        CardAddCurso
+        CardEditarCurso
     }
 }
 </script>
@@ -68,7 +68,7 @@ button{
     width: 30px;
 }
 
-.cardAddCurso{
+.CardEditarCurso{
     margin-right: 20px;
 }
 </style>

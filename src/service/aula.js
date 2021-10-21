@@ -14,5 +14,8 @@ export default {
         }).catch(error => {
             return error
         })
+    },
+    postAula(conteudo){
+        return api.post('Aulas', conteudo)
     }
 }

@@ -34,7 +34,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 91.4vh;
 }
 
 .content{

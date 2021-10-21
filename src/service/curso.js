@@ -15,6 +15,12 @@ export default {
             return error
         })
     },
+    postCurso(conteudo){
+        return api.post('Cursos', conteudo)
+    },
+    editCurso(conteudo, cursoId){
+        return api.put(`Cursos/${cursoId}`, conteudo)
+    },
     deleteCursoById(cursoId){
         return api.delete(`Cursos/${cursoId}`).then(res => {
             return res
