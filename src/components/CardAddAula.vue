@@ -4,6 +4,7 @@
         <input type="text" placeholder="Título da aula" required v-model="aula.aulaTitulo">
         <input type="text" placeholder="Link da aula" required v-model="aula.aulaLink">
         <input id="descricao" type="text" placeholder="Descrição da aula" required v-model="aula.aulaDescricao">
+        <input type="number" v-model="aula.cursoId" placeholder="Id do Curso" required>
     </div>
 
     <button>salvar</button>
@@ -20,8 +21,8 @@ export default {
             aula:{
                 aulaTitulo: '',
                 aulaLink: '',
-                aulaDescricao: ''
-                /* cursoId:  */
+                aulaDescricao: '',
+                cursoId: parseInt('')
             }
         }
     },
@@ -32,7 +33,7 @@ export default {
            }).catch(error =>{
                 alert(error)
            }) 
-        }       
+        } 
     }
 }
 </script>

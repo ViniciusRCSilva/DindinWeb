@@ -64,7 +64,7 @@ export default {
             this.$router.push(`Aulas/Editar/${aulaId}`);
         },
         editar(){
-            Curso.editCurso(this.curso).then(() =>{
+            Curso.editCurso(this.curso, this.curso.cursoId).then(() =>{
                 alert('Curso editado com sucesso')
            }).catch(error =>{
                 alert(error)

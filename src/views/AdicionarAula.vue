@@ -1,7 +1,7 @@
 <template>
  <div class="home">
     <div class="content">
-        <h1>Novo Aula</h1>
+        <h1>Nova Aula</h1>
         <CardAddAula class="CardAddAula"/>    
     </div>
   </div>    
