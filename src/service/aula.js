@@ -8,6 +8,13 @@ export default {
             return error
         })
     },
+    getAulaById(aulaId) {
+        return api.get(`Aulas/${aulaId}`).then(res => {
+            return res
+        }).catch(error => {
+            return error
+        })
+    },    
     getAulasByCursoId(cursoId) {
         return api.get(`AulasPorCurso/${cursoId}`).then(res => {
             return res
