@@ -1,6 +1,6 @@
 <template>
 <div>
-    <form @submit.prevent="editar">
+    <form @submit.prevent="editar($route.params.cursoId)">
         <div id="cursoArea">
             <input type="text" placeholder="Título" v-model="curso.titulo">
             <input type="text" placeholder="upload capa" v-model="curso.imagemCapa">
@@ -63,12 +63,19 @@ export default {
         openEditAula(aulaId) {
             this.$router.push(`Aulas/Editar/${aulaId}`);
         },
-        editar(){
-            Curso.editCurso(this.curso, this.curso.cursoId).then(() =>{
-                alert('Curso editado com sucesso')
-           }).catch(error =>{
-                alert(error)
-           })
+        editar(id) {       
+            api.put(`Cursos/${id}`, {           
+                cursoId: parseInt(id),           
+                titulo: this.curso.titulo,           
+                professor: this.curso.professor,           
+                imagemCapa: this.curso.imagemCapa,           
+                cursoDescricao: this.curso.cursoDescricao,         
+            }).then(() => {           
+                alert("Curso atualizado com sucesso!");  
+                this.$router.push('/painelAdministrativo');       
+            }).catch((error) => {           
+                console.log(error);         
+            });     
         }
     }
 }
