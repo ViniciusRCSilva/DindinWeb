@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test":"jest"
   },
   "dependencies": {
     "axios": "^0.22.0",
@@ -28,13 +29,23 @@
     "vue-template-compiler": "^2.6.11"
   },
   "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    },
     "moduleFileExtensions": [
       "js",
       "json",
       "vue"
     ],
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"],
+    
     "transform": {
-      ".*\\.(vue)$": "vue-jest"
+      ".*\\.(vue)$": "vue-jest",
+      ".*\\.(js)$": "babel-jest"
     }
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"]
   }
 }
