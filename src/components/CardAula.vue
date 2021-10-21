@@ -3,7 +3,7 @@
     <div v-for="aula in listAulas" :key="aula.index">
         <div id="videoArea">
           <div id="allVideoInf">
-            <a :href="aula.aulaLink"><img :src="aula.aulaLink" alt="video" id="video"></a>
+            <a :href="aula.aulaLink"><img src="@/assets/video.svg" alt="video" id="video"></a>
             <div id="videoDescription">
                 <h1>{{ aula.aulaTitulo }}</h1>
                 <p>{{ aula.aulaDescricao }}</p>
