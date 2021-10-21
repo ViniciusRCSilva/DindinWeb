@@ -38,6 +38,7 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import api from "../service/api"
 
 export default {
     name: 'CardEditarCurso',
